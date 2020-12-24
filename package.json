@@ -1,0 +1,22 @@
+{
+  "name": "type-script-study-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rrroman/type-script-study-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rrroman/type-script-study-project/issues"
+  },
+  "homepage": "https://github.com/Rrroman/type-script-study-project#readme",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
