@@ -1,13 +1,15 @@
+type Combinable = number | string;
+type ConversionDescriptor = 'as-number' | 'as-text';
+
 enum TypeParameter {
   AS_TEXT = 'as-text',
   AS_NUMBER = 'as-number',
 }
 
 function combine(
-  input1: number | string,
-  input2: number | string,
-  resultConversion: TypeParameter.AS_TEXT | TypeParameter.AS_NUMBER,
-  // resultConversion: 'as-text' | 'as-number',
+  input1: Combinable,
+  input2: Combinable,
+  resultConversion: ConversionDescriptor,
 ) {
   let result;
   if (
@@ -17,7 +19,7 @@ function combine(
   ) {
     result = +input1 + +input2;
   } else {
-    result = input1.toString() + input2.toString();
+    result = `${input1.toString()} and ${input2.toString()}`;
   }
   // return result;
 
@@ -28,10 +30,9 @@ function combine(
   }
 }
 
-const combineAges = combine(40, 18, TypeParameter.AS_NUMBER);
+const combineAges = combine(40, 18, 'as-number');
 console.log(`Type is ${typeof combineAges} -> ${combineAges} `);
-console.log(combineAges);
-const combineAgesAsText = combine(40, 18, TypeParameter.AS_TEXT);
+const combineAgesAsText = combine(40, 18, 'as-text');
 console.log(`Type is ${typeof combineAgesAsText} -> ${combineAgesAsText}`);
 
 const combineNames = combine('Roman', 'Jane', TypeParameter.AS_TEXT);
