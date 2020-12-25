@@ -1,39 +1,31 @@
-type Combinable = number | string;
-type ConversionDescriptor = 'as-number' | 'as-text';
-
-enum TypeParameter {
-  AS_TEXT = 'as-text',
-  AS_NUMBER = 'as-number',
+function multiply(num1: number, num2: number) {
+  return num1 * num2;
 }
 
-function combine(
-  input1: Combinable,
-  input2: Combinable,
-  resultConversion: ConversionDescriptor,
+function printResultInConsoleOnly(num: number): void {
+  console.log(`Result: ${num}`);
+}
+
+function multiplyAndHandle(
+  n1: number,
+  n2: number,
+  callBack: (num: number) => void,
 ) {
-  let result;
-  if (
-    typeof input1 === 'number' &&
-    typeof input2 === 'number'
-    // || resultConversion === 'as-number'
-  ) {
-    result = +input1 + +input2;
-  } else {
-    result = `${input1.toString()} and ${input2.toString()}`;
-  }
-  // return result;
-
-  if (resultConversion === 'as-number') {
-    return +result;
-  } else {
-    return result.toString();
-  }
+  const result = n1 + n2;
+  callBack(result);
 }
 
-const combineAges = combine(40, 18, 'as-number');
-console.log(`Type is ${typeof combineAges} -> ${combineAges} `);
-const combineAgesAsText = combine(40, 18, 'as-text');
-console.log(`Type is ${typeof combineAgesAsText} -> ${combineAgesAsText}`);
+multiplyAndHandle(5, 3, (result) => {
+  console.log(`Call back result: ${result}`);
+});
 
-const combineNames = combine('Roman', 'Jane', TypeParameter.AS_TEXT);
-console.log(combineNames);
+printResultInConsoleOnly(multiply(3, 5));
+
+let combineValues: (a: number, b: number) => number;
+
+combineValues = multiply;
+
+// combineValues = printResultInConsoleOnly;
+// combineValues = 5;
+
+console.log(combineValues(8, 3));

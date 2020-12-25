@@ -1,30 +1,19 @@
-var TypeParameter;
-(function (TypeParameter) {
-    TypeParameter["AS_TEXT"] = "as-text";
-    TypeParameter["AS_NUMBER"] = "as-number";
-})(TypeParameter || (TypeParameter = {}));
-function combine(input1, input2, resultConversion) {
-    var result;
-    if (typeof input1 === 'number' &&
-        typeof input2 === 'number'
-    // || resultConversion === 'as-number'
-    ) {
-        result = +input1 + +input2;
-    }
-    else {
-        result = input1.toString() + " and " + input2.toString();
-    }
-    // return result;
-    if (resultConversion === 'as-number') {
-        return +result;
-    }
-    else {
-        return result.toString();
-    }
+function multiply(num1, num2) {
+    return num1 * num2;
 }
-var combineAges = combine(40, 18, 'as-number');
-console.log("Type is " + typeof combineAges + " -> " + combineAges + " ");
-var combineAgesAsText = combine(40, 18, 'as-text');
-console.log("Type is " + typeof combineAgesAsText + " -> " + combineAgesAsText);
-var combineNames = combine('Roman', 'Jane', TypeParameter.AS_TEXT);
-console.log(combineNames);
+function printResultInConsoleOnly(num) {
+    console.log("Result: " + num);
+}
+function multiplyAndHandle(n1, n2, callBack) {
+    var result = n1 + n2;
+    callBack(result);
+}
+multiplyAndHandle(5, 3, function (result) {
+    console.log("Call back result: " + result);
+});
+printResultInConsoleOnly(multiply(3, 5));
+var combineValues;
+combineValues = multiply;
+// combineValues = printResultInConsoleOnly;
+// combineValues = 5;
+console.log(combineValues(8, 3));
