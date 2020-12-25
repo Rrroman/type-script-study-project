@@ -34,5 +34,5 @@ console.log(combineAges);
 const combineAgesAsText = combine(40, 18, TypeParameter.AS_TEXT);
 console.log(`Type is ${typeof combineAgesAsText} -> ${combineAgesAsText}`);
 
-const combineNames = combine('Roman', 'Jane', 'as-text');
+const combineNames = combine('Roman', 'Jane', TypeParameter.AS_TEXT);
 console.log(combineNames);
