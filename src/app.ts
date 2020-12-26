@@ -1,10 +1,7 @@
 class JobClass {
-  job: string;
-  private nameList: string[] = [];
+  // private nameList: string[] = [];
 
-  constructor(jobParam: string) {
-    this.job = jobParam;
-  }
+  constructor(public job: string, private nameList: string[] = []) {}
 
   greet(this: JobClass) {
     console.log(`Hello ${this.job}`);
