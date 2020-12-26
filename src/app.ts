@@ -1,10 +1,14 @@
 class JobClass {
   // private nameList: string[] = [];
 
-  constructor(public job: string, private nameList: string[] = []) {}
+  constructor(
+    public job: string,
+    private readonly secretPhrase: string,
+    private nameList: string[] = [],
+  ) {}
 
   greet(this: JobClass) {
-    console.log(`Hello ${this.job}`);
+    console.log(`Hello ${this.job} ${this.secretPhrase}`);
   }
 
   hireWorker(name: string) {
@@ -19,7 +23,7 @@ class JobClass {
   }
 }
 
-const bob = new JobClass('Director');
+const bob = new JobClass('Director', 'Sun is shining, flowers are smelling');
 bob.greet();
 
 bob.hireWorker('Greg');
