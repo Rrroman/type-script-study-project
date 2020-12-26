@@ -1,6 +1,4 @@
 class JobClass {
-  // private nameList: string[] = [];
-
   constructor(
     public job: string,
     private readonly secretPhrase: string,
@@ -30,9 +28,18 @@ bob.hireWorker('Greg');
 bob.hireWorker('Gim');
 bob.hireWorker('Jonathan');
 
-// bob.nameList[6] = 'Nathan'; // Private field. Used to block this possibility to change array directly without method hireWorker().
-
 bob.printWorkersListInfo();
 
-// const jack = { job: 'Waiter', greet: bob.greet };
-// jack.greet();
+class Musician extends JobClass {
+  constructor(musicStyle: string, private food: string) {
+    super(musicStyle, 'Cats sing songs');
+  }
+
+  sayFavoriteFood(oneMoreDish: string) {
+    console.log(`I just love ${this.food} and ${oneMoreDish}`);
+  }
+}
+const tom = new Musician('singer', 'i like borscht');
+
+tom.greet();
+tom.sayFavoriteFood('Crabs');
