@@ -31,6 +31,8 @@ bob.hireWorker('Jonathan');
 bob.printWorkersListInfo();
 
 class Musician extends JobClass {
+  static iWantPhrase = 'I want to';
+
   get songsAnswer() {
     if (this.song.length < 1) {
       throw new Error('Just sing your songs');
@@ -39,7 +41,14 @@ class Musician extends JobClass {
   }
 
   set answer(newSong: string) {
+    if (!newSong) {
+      throw new Error('Please sing song!');
+    }
     this.singSong(newSong);
+  }
+
+  static printSongNumber(songNum: number): void {
+    console.log(`${Musician.iWantPhrase} hear song number ${songNum}`);
   }
 
   constructor(
@@ -66,6 +75,7 @@ class Musician extends JobClass {
 const tom = new Musician('singer', 'i like borscht');
 
 console.log((tom.answer = 'Maroon 5 songs'));
+// console.log((tom.answer = ''));
 console.log(tom.songsAnswer);
 tom.singSong('Happy New Year');
 console.log(tom.songsAnswer);
@@ -74,3 +84,4 @@ tom.greet();
 tom.sayFavoriteFood('Crabs');
 tom.hireWorker('Steve');
 tom.printWorkersListInfo();
+Musician.printSongNumber(4);
