@@ -1,13 +1,11 @@
-class JobClass {
+abstract class JobClass {
   constructor(
     public job: string,
-    private readonly secretPhrase: string,
+    protected secretPhrase: string,
     protected nameList: string[] = [],
   ) {}
 
-  greet(this: JobClass) {
-    console.log(`Hello ${this.job} ${this.secretPhrase}`);
-  }
+  abstract greet(this: JobClass): void;
 
   hireWorker(name: string) {
     this.nameList.push(name);
@@ -21,14 +19,14 @@ class JobClass {
   }
 }
 
-const bob = new JobClass('Director', 'Sun is shining, flowers are smelling');
-bob.greet();
+// const bob = new JobClass('Director', 'Sun is shining, flowers are smelling');
+// bob.greet();
 
-bob.hireWorker('Greg');
-bob.hireWorker('Gim');
-bob.hireWorker('Jonathan');
+// bob.hireWorker('Greg');
+// bob.hireWorker('Gim');
+// bob.hireWorker('Jonathan');
 
-bob.printWorkersListInfo();
+// bob.printWorkersListInfo();
 
 class Musician extends JobClass {
   static iWantPhrase = 'I want to';
@@ -69,6 +67,10 @@ class Musician extends JobClass {
 
   singSong(songs: string) {
     this.song.push(songs);
+  }
+
+  greet() {
+    console.log(`Hello ${this.job} My secret is: ${this.secretPhrase}`);
   }
 }
 
