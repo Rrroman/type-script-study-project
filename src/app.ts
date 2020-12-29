@@ -2,7 +2,7 @@ class JobClass {
   constructor(
     public job: string,
     private readonly secretPhrase: string,
-    private nameList: string[] = [],
+    protected nameList: string[] = [],
   ) {}
 
   greet(this: JobClass) {
@@ -35,6 +35,10 @@ class Musician extends JobClass {
     super(musicStyle, 'Cats sing songs');
   }
 
+  hireWorker(name: string) {
+    this.nameList.push(`Sound helper ${name}`);
+  }
+
   sayFavoriteFood(oneMoreDish: string) {
     console.log(`I just love ${this.food} and ${oneMoreDish}`);
   }
@@ -43,3 +47,5 @@ const tom = new Musician('singer', 'i like borscht');
 
 tom.greet();
 tom.sayFavoriteFood('Crabs');
+tom.hireWorker('Steve');
+tom.printWorkersListInfo();
