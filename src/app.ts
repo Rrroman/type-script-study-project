@@ -30,6 +30,7 @@ abstract class JobClass {
 
 class Musician extends JobClass {
   static iWantPhrase = 'I want to';
+  private static instance: Musician;
 
   get songsAnswer() {
     if (this.song.length < 1) {
@@ -45,16 +46,24 @@ class Musician extends JobClass {
     this.singSong(newSong);
   }
 
-  static printSongNumber(songNum: number): void {
-    console.log(`${Musician.iWantPhrase} hear song number ${songNum}`);
-  }
-
-  constructor(
+  private constructor(
     musicStyle: string,
     private food: string,
     private song: string[] = [],
   ) {
     super(musicStyle, 'Cats sing songs');
+  }
+
+  static getInstance() {
+    if (Musician.instance) {
+      return this.instance;
+    }
+    this.instance = new Musician('singer', 'i like borscht');
+    return this.instance;
+  }
+
+  static printSongNumber(songNum: number): void {
+    console.log(`${Musician.iWantPhrase} hear song number ${songNum}`);
   }
 
   hireWorker(name: string) {
@@ -74,7 +83,9 @@ class Musician extends JobClass {
   }
 }
 
-const tom = new Musician('singer', 'i like borscht');
+const tom = Musician.getInstance();
+const kenny = Musician.getInstance();
+console.log(`Is tom equal kenny? -> ${tom === kenny}`);
 
 console.log((tom.answer = 'Maroon 5 songs'));
 // console.log((tom.answer = ''));
@@ -86,4 +97,4 @@ tom.greet();
 tom.sayFavoriteFood('Crabs');
 tom.hireWorker('Steve');
 tom.printWorkersListInfo();
-Musician.printSongNumber(4);
+Musician.printSongNumber(42);
