@@ -31,7 +31,22 @@ bob.hireWorker('Jonathan');
 bob.printWorkersListInfo();
 
 class Musician extends JobClass {
-  constructor(musicStyle: string, private food: string) {
+  get songsAnswer() {
+    if (this.song.length < 1) {
+      throw new Error('Just sing your songs');
+    }
+    return this.song;
+  }
+
+  set answer(newSong: string) {
+    this.singSong(newSong);
+  }
+
+  constructor(
+    musicStyle: string,
+    private food: string,
+    private song: string[] = [],
+  ) {
     super(musicStyle, 'Cats sing songs');
   }
 
@@ -42,8 +57,18 @@ class Musician extends JobClass {
   sayFavoriteFood(oneMoreDish: string) {
     console.log(`I just love ${this.food} and ${oneMoreDish}`);
   }
+
+  singSong(songs: string) {
+    this.song.push(songs);
+  }
 }
+
 const tom = new Musician('singer', 'i like borscht');
+
+console.log((tom.answer = 'Maroon 5 songs'));
+console.log(tom.songsAnswer);
+tom.singSong('Happy New Year');
+console.log(tom.songsAnswer);
 
 tom.greet();
 tom.sayFavoriteFood('Crabs');
