@@ -1,8 +1,21 @@
+// type addNumbers = (number1: number, number2: number) => number;
+// Interface can be used to functions, just like type.
+// Below is example of syntax looking like self invoking function.
+interface addNumbers {
+  (number1: number, number2: number): number;
+}
+
+const add: addNumbers = (a, b) => {
+  return a + b;
+};
+
+console.log(add(3, 5));
 interface Aged {
   age: number;
 }
 
-// interface Greetable extends Aged, Named, Danceable // Can extend multiple interfaces just count them with coma ','
+// interface Greetable extends Aged, Named, Danceable
+// Can extend multiple interfaces just count them with coma ','
 // Class can be inherit only from 1 class, can't extends on multiple classes
 interface Greetable extends Aged {
   name: string;
