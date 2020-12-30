@@ -1,6 +1,11 @@
-interface Greetable {
-  name: string;
+interface Aged {
   age: number;
+}
+
+// interface Greetable extends Aged, Named, Danceable // Can extend multiple interfaces just count them with coma ','
+// Class can be inherit only from 1 class, can't extends on multiple classes
+interface Greetable extends Aged {
+  name: string;
   readonly dance: string;
 
   greet(phrase: string): void;
