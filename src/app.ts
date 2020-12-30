@@ -83,3 +83,32 @@ function drivingCar(vehicle: Vehicle) {
 }
 drivingCar(smallCar);
 drivingCar(bigCar);
+
+interface Bird {
+  type: 'bird';
+  flySpeed: number;
+}
+
+interface Horse {
+  type: 'horse';
+  runSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function animalRun(animal: Animal) {
+  switch (animal.type) {
+    case 'bird':
+      console.log(`${animal.type} runs at speed ${animal.flySpeed}`);
+      break;
+    case 'horse':
+      console.log(`${animal.type} fly's at speed ${animal.runSpeed}`);
+      break;
+
+    default:
+      break;
+  }
+}
+
+animalRun({ type: 'bird', flySpeed: 10 });
+animalRun({ type: 'horse', runSpeed: 12 });
