@@ -44,6 +44,16 @@ console.log(result);
 console.log(add(5, '6'));
 console.log(add(5, 6));
 
+const fetchedUserData = {
+  name: 'Roman',
+  id: '1',
+  job: {
+    title: 'developer',
+  },
+};
+
+console.log(fetchedUserData?.job?.title);
+
 // type UnknownEmployee = Employee | Admin;
 
 // function printEmployeeInformation(emp: UnknownEmployee): void {
