@@ -25,6 +25,10 @@ type Numeric = number | boolean;
 // Hint type number must be used
 type Universal = Combinable & Numeric;
 
+function add(a: string, b: number): number;
+function add(a: number, b: string): number;
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
 function add(a: Combinable, b: Combinable) {
   if (typeof a === 'string' || typeof b === 'string') {
     return a.toString() + b.toString();
@@ -32,101 +36,105 @@ function add(a: Combinable, b: Combinable) {
   return a + b;
 }
 
+// const result = add('one', 'man') as string;
+const result = add('one', 'man');
+result.split('');
+
 console.log(add(5, '6'));
 console.log(add(5, 6));
 
-type UnknownEmployee = Employee | Admin;
+// type UnknownEmployee = Employee | Admin;
 
-function printEmployeeInformation(emp: UnknownEmployee): void {
-  if ('name' in emp) {
-    console.log(`Name ${emp.name}`);
-  }
-  if ('hobbies' in emp) {
-    console.log(`Hobbies ${emp.hobbies}`);
-  }
-  if ('workDay' in emp) {
-    console.log(`Work begin ${emp.workDay.toLocaleString()}`);
-  }
-}
+// function printEmployeeInformation(emp: UnknownEmployee): void {
+//   if ('name' in emp) {
+//     console.log(`Name ${emp.name}`);
+//   }
+//   if ('hobbies' in emp) {
+//     console.log(`Hobbies ${emp.hobbies}`);
+//   }
+//   if ('workDay' in emp) {
+//     console.log(`Work begin ${emp.workDay.toLocaleString()}`);
+//   }
+// }
 
-printEmployeeInformation(worker);
-printEmployeeInformation({ name: 'Robin', workDay: new Date() });
+// printEmployeeInformation(worker);
+// printEmployeeInformation({ name: 'Robin', workDay: new Date() });
 
-class Car {
-  drive() {
-    console.log('Driving car');
-  }
-}
-class Truck {
-  drive() {
-    console.log('Driving truck');
-  }
+// class Car {
+//   drive() {
+//     console.log('Driving car');
+//   }
+// }
+// class Truck {
+//   drive() {
+//     console.log('Driving truck');
+//   }
 
-  cargo(weight: number) {
-    console.log(`Driving truck with cargo weight: ${weight}`);
-  }
-}
+//   cargo(weight: number) {
+//     console.log(`Driving truck with cargo weight: ${weight}`);
+//   }
+// }
 
-type Vehicle = Car | Truck;
+// type Vehicle = Car | Truck;
 
-const smallCar = new Car();
-const bigCar = new Truck();
+// const smallCar = new Car();
+// const bigCar = new Truck();
 
-function drivingCar(vehicle: Vehicle) {
-  if (vehicle instanceof Car) {
-    vehicle.drive;
-  }
-  if (vehicle instanceof Truck) {
-    vehicle.drive();
-    vehicle.cargo(1000);
-  }
-}
-drivingCar(smallCar);
-drivingCar(bigCar);
+// function drivingCar(vehicle: Vehicle) {
+//   if (vehicle instanceof Car) {
+//     vehicle.drive;
+//   }
+//   if (vehicle instanceof Truck) {
+//     vehicle.drive();
+//     vehicle.cargo(1000);
+//   }
+// }
+// drivingCar(smallCar);
+// drivingCar(bigCar);
 
-interface Bird {
-  type: 'bird';
-  flySpeed: number;
-}
+// interface Bird {
+//   type: 'bird';
+//   flySpeed: number;
+// }
 
-interface Horse {
-  type: 'horse';
-  runSpeed: number;
-}
+// interface Horse {
+//   type: 'horse';
+//   runSpeed: number;
+// }
 
-type Animal = Bird | Horse;
+// type Animal = Bird | Horse;
 
-function animalRun(animal: Animal) {
-  switch (animal.type) {
-    case 'bird':
-      console.log(`${animal.type} runs at speed ${animal.flySpeed}`);
-      break;
-    case 'horse':
-      console.log(`${animal.type} fly's at speed ${animal.runSpeed}`);
-      break;
+// function animalRun(animal: Animal) {
+//   switch (animal.type) {
+//     case 'bird':
+//       console.log(`${animal.type} runs at speed ${animal.flySpeed}`);
+//       break;
+//     case 'horse':
+//       console.log(`${animal.type} fly's at speed ${animal.runSpeed}`);
+//       break;
 
-    default:
-      break;
-  }
-}
+//     default:
+//       break;
+//   }
+// }
 
-animalRun({ type: 'bird', flySpeed: 10 });
-animalRun({ type: 'horse', runSpeed: 12 });
+// animalRun({ type: 'bird', flySpeed: 10 });
+// animalRun({ type: 'horse', runSpeed: 12 });
 
-// const inputText = <HTMLInputElement>document.querySelector('input')!;
-// const inputText = document.querySelector('input')! as HTMLInputElement;
-const inputText = document.querySelector('input');
+// // const inputText = <HTMLInputElement>document.querySelector('input')!;
+// // const inputText = document.querySelector('input')! as HTMLInputElement;
+// const inputText = document.querySelector('input');
 
-if (inputText) {
-  // inputText.value = 'It Works!';
-  (inputText as HTMLInputElement).value = 'It Works!';
-}
+// if (inputText) {
+//   // inputText.value = 'It Works!';
+//   (inputText as HTMLInputElement).value = 'It Works!';
+// }
 
-interface ErrorContainer {
-  [prop: string]: string;
-}
+// interface ErrorContainer {
+//   [prop: string]: string;
+// }
 
-const errorBag: ErrorContainer = {
-  email: 'Should be valid',
-  name: 'Contain only characters',
-};
+// const errorBag: ErrorContainer = {
+//   email: 'Should be valid',
+//   name: 'Contain only characters',
+// };
