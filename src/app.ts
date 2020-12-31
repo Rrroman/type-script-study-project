@@ -40,3 +40,12 @@ function printLengthOfElements<T extends Lengthy>(element: T): [T, string] {
 console.log(printLengthOfElements([]));
 console.log(printLengthOfElements(['Hi this is big string']));
 console.log(printLengthOfElements(['Lol', 'crab']));
+
+function extractAndConvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U,
+) {
+  return `Value is ${obj[key]}`;
+}
+
+console.log(extractAndConvert({ age: 42, name: 'Kenny' }, 'name'));
