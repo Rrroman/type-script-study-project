@@ -37,8 +37,9 @@ function add(a: Combinable, b: Combinable) {
 }
 
 // const result = add('one', 'man') as string;
-const result = add('one', 'man');
+const result = add('one ', 'man ');
 result.split('');
+console.log(result);
 
 console.log(add(5, '6'));
 console.log(add(5, 6));
