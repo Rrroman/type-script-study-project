@@ -112,3 +112,12 @@ function animalRun(animal: Animal) {
 
 animalRun({ type: 'bird', flySpeed: 10 });
 animalRun({ type: 'horse', runSpeed: 12 });
+
+// const inputText = <HTMLInputElement>document.querySelector('input')!;
+// const inputText = document.querySelector('input')! as HTMLInputElement;
+const inputText = document.querySelector('input');
+
+if (inputText) {
+  // inputText.value = 'It Works!';
+  (inputText as HTMLInputElement).value = 'It Works!';
+}
