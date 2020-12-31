@@ -54,6 +54,20 @@ const fetchedUserData = {
 
 console.log(fetchedUserData?.job?.title);
 
+const userName = '';
+const userSecondName = null;
+
+// '' - is falsy so Default will print
+const storedName = userName || 'Default';
+// if we want 'Default' only when null or undefined;
+const strictStoredName = userName ?? 'Default';
+const strictStoredSecondName = userSecondName ?? 'Default';
+
+console.log(strictStoredSecondName);
+console.log(userSecondName);
+console.log(strictStoredName);
+console.log(storedName);
+
 // type UnknownEmployee = Employee | Admin;
 
 // function printEmployeeInformation(emp: UnknownEmployee): void {
