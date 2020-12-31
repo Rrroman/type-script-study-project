@@ -121,3 +121,12 @@ if (inputText) {
   // inputText.value = 'It Works!';
   (inputText as HTMLInputElement).value = 'It Works!';
 }
+
+interface ErrorContainer {
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: 'Should be valid',
+  name: 'Contain only characters',
+};
