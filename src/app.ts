@@ -88,3 +88,21 @@ console.log(...numberList.getItem());
 // objList.deleteItem({ name: 'Roman' });
 // // objList.deleteItem({ name: 'Bonny' });
 // console.log(...objList.getItem());
+
+interface Schedule {
+  name: string;
+  description: string;
+  endDate: Date;
+}
+
+function createSchedule(name: string, description: string, endDate: Date) {
+  let schedule: Partial<Schedule> = {};
+  schedule.name = name;
+  schedule.description = description;
+  schedule.endDate = endDate;
+  return schedule as Schedule;
+}
+
+const names: Readonly<string[]> = ['Roman', 'Anna'];
+// names.push('Tanya');
+// names.pop()
