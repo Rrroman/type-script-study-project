@@ -1,15 +1,17 @@
-function Logger(constructor: Function) {
-  console.log('loading');
-  console.log(`Using: --> ${constructor}`);
+function Logger(logString: string) {
+  return function (constructor: Function) {
+    console.log(logString);
+    console.log(`Using: --> ${constructor}`);
+  };
 }
-@Logger
+@Logger('Loading Human Class...')
 class Human {
   name = 'Roman';
   constructor() {
     console.log(
-      `Creating object with field -> ${Object.keys(this)} and value -> ${
-        this.name
-      }`,
+      `Creating ${JSON.stringify(this)} with field -> ${Object.keys(
+        this,
+      )} and value -> ${this.name}`,
     );
   }
 }
