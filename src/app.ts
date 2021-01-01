@@ -49,3 +49,42 @@ function extractAndConvert<T extends object, U extends keyof T>(
 }
 
 console.log(extractAndConvert({ age: 42, name: 'Kenny' }, 'name'));
+
+// class DataList<T> {
+class DataList<T extends string | number | boolean> {
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  deleteItem(item: T) {
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+
+  getItem() {
+    return [...this.data];
+  }
+}
+
+const textList = new DataList<string>();
+textList.addItem('Roman');
+textList.addItem('Robert');
+textList.deleteItem('Robert');
+console.log(...textList.getItem());
+
+const numberList = new DataList<number>();
+numberList.addItem(2);
+numberList.addItem(3);
+numberList.addItem(4);
+console.log(...numberList.getItem());
+
+// we can constrain obj or extend logic
+// const objList = new DataList<object>();
+// objList.addItem({ name: 'Roman' });
+// objList.addItem({ name: 'Bonny' });
+
+// // Roman not deleting, but last item deleting -1 idx.
+// objList.deleteItem({ name: 'Roman' });
+// // objList.deleteItem({ name: 'Bonny' });
+// console.log(...objList.getItem());
