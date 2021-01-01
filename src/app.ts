@@ -1,12 +1,16 @@
 function Logger(logString: string) {
+  console.log('Logger factory');
   return function (constructor: Function) {
+    console.log('Logging...');
     console.log(logString);
     console.log(`Using: --> ${constructor}`);
   };
 }
 
 function WithTemplate(template: string, hookElement: string) {
+  console.log('Template factory');
   return function (constructor: any) {
+    console.log('Rendering template');
     const hookEl = document.querySelector(hookElement);
     const person = new constructor();
     if (hookEl) {
@@ -16,7 +20,7 @@ function WithTemplate(template: string, hookElement: string) {
   };
 }
 
-// @Logger('Loading Human Class...')
+@Logger('Loading Human Class...')
 @WithTemplate(`<h1 class="title">Hello</h1>`, '.app')
 class Human {
   name = 'Roman';
