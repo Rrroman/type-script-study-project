@@ -4,7 +4,20 @@ function Logger(logString: string) {
     console.log(`Using: --> ${constructor}`);
   };
 }
-@Logger('Loading Human Class...')
+
+function WithTemplate(template: string, hookElement: string) {
+  return function (constructor: any) {
+    const hookEl = document.querySelector(hookElement);
+    const person = new constructor();
+    if (hookEl) {
+      hookEl.innerHTML = template;
+      hookEl.querySelector('.title')!.textContent = person.name;
+    }
+  };
+}
+
+// @Logger('Loading Human Class...')
+@WithTemplate(`<h1 class="title">Hello</h1>`, '.app')
 class Human {
   name = 'Roman';
   constructor() {
