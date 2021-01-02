@@ -34,3 +34,31 @@ class Human {
 }
 
 const person = new Human();
+
+function Log(target: any, propertyName: string | Symbol) {
+  console.log('Property decorator!');
+  console.log(target, propertyName);
+}
+
+class Product {
+  @Log
+  title: string;
+  private price: number;
+
+  set setPrice(val: number) {
+    if (val > 0) {
+      this.price = val;
+    } else {
+      throw new Error('Price should be positive number!');
+    }
+  }
+
+  constructor(myTitle: string, myPrice: number) {
+    this.title = myTitle;
+    this.price = myPrice;
+  }
+
+  getPriceWithTax(tax: number) {
+    return this.price * (1 + tax);
+  }
+}
